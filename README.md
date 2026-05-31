@@ -8,6 +8,11 @@ no analytics, no server the developer can see.
 > This repository holds **only the documentation and the exact import scripts** so you can
 > read the guides and verify the scripts for yourself. The app itself is a separate project.
 
+## ⬇ Get the app
+- **Download page:** https://tgon21.github.io/diamond-dynasty-companion-docs/
+- **Direct download:** [latest `MLB-Companion.zip`](https://github.com/Tgon21/diamond-dynasty-companion-docs/releases/latest/download/MLB-Companion.zip)
+- **What changed:** [CHANGELOG](CHANGELOG.md)
+
 ## Guides
 - 📖 **[How to run the app](HOW-TO-RUN.md)** — install & launch on Windows
 - 🧮 **[Criteria guide (ALL / ANY)](CRITERIA-GUIDE.md)** — build lineup filters

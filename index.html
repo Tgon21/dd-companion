@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MLB The Show 26 — Diamond Dynasty Companion</title>
+<meta name="description" content="Free fan-made tool: see your duplicate cards and sell value, browse the card database, and build lineups with granular ALL/ANY filtering." />
+<style>
+  :root { --bg:#0f1115; --panel:#161a22; --panel2:#1d222c; --line:#2a313d; --text:#e7ecf3; --muted:#8b97a8; --accent:#f5a623; --blue:#5aa6ff; --green:#3fb950; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font:16px/1.6 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif; }
+  a { color: var(--blue); }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 32px 20px 60px; }
+  header { text-align:center; padding: 28px 0 8px; }
+  h1 { font-size: 30px; margin: 0 0 6px; }
+  .sub { color: var(--muted); }
+  .tagline { background: var(--panel); border:1px solid var(--line); border-left:4px solid var(--accent); border-radius:10px; padding:14px 16px; margin:22px 0; }
+  .cta { text-align:center; margin: 26px 0 8px; }
+  .dl { display:inline-block; background:var(--accent); color:#1a1205; font-weight:800; font-size:18px; text-decoration:none; padding:14px 26px; border-radius:12px; }
+  .dl:hover { filter:brightness(1.07); }
+  .ver { text-align:center; color:var(--muted); font-size:14px; margin-top:10px; }
+  .ver b { color: var(--text); }
+  .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:18px 0; }
+  @media (max-width:640px){ .grid2 { grid-template-columns:1fr; } }
+  .card { background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:16px; }
+  .card h3 { margin:0 0 6px; }
+  .pill { display:inline-block; font-size:12px; font-weight:700; padding:2px 8px; border-radius:20px; background:var(--panel2); border:1px solid var(--line); color:var(--muted); }
+  h2 { margin-top:34px; border-bottom:1px solid var(--line); padding-bottom:6px; }
+  .note { background:rgba(245,166,35,.08); border:1px solid rgba(245,166,35,.3); border-radius:10px; padding:12px 14px; font-size:14px; }
+  ul.docs { list-style:none; padding:0; display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  @media (max-width:640px){ ul.docs { grid-template-columns:1fr; } }
+  ul.docs a { display:block; background:var(--panel); border:1px solid var(--line); border-radius:9px; padding:11px 13px; text-decoration:none; color:var(--text); }
+  ul.docs a:hover { border-color:var(--accent); }
+  .whatsnew { background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:14px 18px; }
+  footer { color:var(--muted); font-size:13px; text-align:center; margin-top:40px; border-top:1px solid var(--line); padding-top:18px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>⚾ Diamond Dynasty Companion</h1>
+    <div class="sub">MLB The Show 26 — free fan-made desktop tool</div>
+  </header>
+
+  <div class="tagline"><b>The most granular filtering lineup creator out there</b> — it builds a full lineup straight from the cards <i>you actually own</i>, narrowed to the exact traits a program or event is asking for, with complete control over how every requirement combines.</div>
+
+  <p>See your duplicate cards and what they'd sell for, browse the full card database, and build lineups. Everything runs <b>on your own PC</b> — no account or login is needed just to browse.</p>
+
+  <div class="cta">
+    <a class="dl" href="https://github.com/Tgon21/diamond-dynasty-companion-docs/releases/latest/download/MLB-Companion.zip">⬇ Download for Windows</a>
+    <div class="ver" id="ver">Latest version: <b id="verNum">…</b><span id="verNotes"></span></div>
+  </div>
+
+  <div class="grid2">
+    <div class="card">
+      <h3>🪟 Windowed app <span class="pill">installer</span></h3>
+      <p>Runs in its own desktop window like a normal program. Double-click <b>MLB Companion Setup.exe</b> inside the zip.</p>
+    </div>
+    <div class="card">
+      <h3>🌐 Browser app <span class="pill">no install</span></h3>
+      <p>Runs and opens in your web browser. Just double-click <b>MLB Companion.exe</b> — nothing installed.</p>
+    </div>
+  </div>
+
+  <div class="note">⚠️ The app isn't code-signed, so the first time Windows may show <b>"Windows protected your PC"</b> — click <b>More info → Run anyway</b>. (It just means there's no paid signing certificate.)</div>
+
+  <h2>📋 What's new</h2>
+  <div class="whatsnew">
+    <p><b>v1.1.0</b> — Two-level <b>ALL / ANY</b> criteria filtering, bigger proportionate cards, a windowed desktop app, and an in-app update checker.</p>
+    <p style="margin:0"><a href="CHANGELOG.md">Full changelog →</a></p>
+  </div>
+
+  <h2>📖 Guides &amp; safety</h2>
+  <ul class="docs">
+    <li><a href="HOW-TO-RUN.md">How to run the app</a></li>
+    <li><a href="CRITERIA-GUIDE.md">Criteria guide (ALL / ANY)</a></li>
+    <li><a href="SAFETY.md">Is this safe? / what the import does</a></li>
+    <li><a href="import-scripts/VERIFY.md">Verify the import scripts</a></li>
+    <li><a href="PRIVACY.md">Privacy Policy</a></li>
+    <li><a href="TERMS.md">Terms &amp; Conditions</a></li>
+  </ul>
+
+  <footer>
+    Unofficial fan tool — not affiliated with, endorsed by, or sponsored by Sony Interactive Entertainment,
+    San Diego Studio, MLB, or the MLBPA. "MLB The Show" and related names &amp; data belong to their respective owners.
+  </footer>
+</div>
+
+<script>
+  // Show the current published version from version.json
+  fetch("https://raw.githubusercontent.com/Tgon21/diamond-dynasty-companion-docs/main/version.json", { cache: "no-store" })
+    .then(function (r) { return r.json(); })
+    .then(function (j) {
+      document.getElementById("verNum").textContent = "v" + (j.version || "?");
+      if (j.notes) document.getElementById("verNotes").textContent = " — " + j.notes;
+    })
+    .catch(function () { document.getElementById("ver").style.display = "none"; });
+</script>
+</body>
+</html>
