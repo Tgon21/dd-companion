@@ -1,5 +1,9 @@
 # Lineup Builder — Criteria Guide (ALL / ANY)
 
+> **The most granular filtering lineup creator out there** — it builds a full lineup straight
+> from the cards *you actually own*, narrowed to the exact traits a program or event is asking
+> for, with complete control over how every requirement combines.
+
 A quick, plain-English guide to building filters in the **Lineup Builder** tab. Anyone can
 follow this — there's really just one idea (**ALL / ANY**), used in two places.
 
