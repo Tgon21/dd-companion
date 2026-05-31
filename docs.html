@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Docs — Diamond Dynasty Companion</title>
+<style>
+  :root { --bg:#0f1115; --panel:#161a22; --panel2:#1d222c; --line:#2a313d; --text:#e7ecf3; --muted:#8b97a8; --accent:#f5a623; --blue:#5aa6ff; --green:#3fb950; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font:16px/1.65 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif; }
+  .topbar { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:12px 18px; background:var(--panel); border-bottom:1px solid var(--line); position:sticky; top:0; z-index:5; }
+  .topbar .brand { font-weight:800; }
+  .topbar a.home { color:var(--blue); text-decoration:none; font-weight:600; }
+  .layout { display:grid; grid-template-columns:230px 1fr; gap:0; max-width:1100px; margin:0 auto; }
+  @media (max-width:760px){ .layout { grid-template-columns:1fr; } nav.side { position:static; border-right:none; border-bottom:1px solid var(--line); } }
+  nav.side { border-right:1px solid var(--line); padding:18px 12px; position:sticky; top:49px; align-self:start; height:calc(100vh - 49px); overflow:auto; }
+  nav.side a { display:block; padding:9px 12px; margin:2px 0; border-radius:8px; color:var(--text); text-decoration:none; font-size:14px; }
+  nav.side a:hover { background:var(--panel2); }
+  nav.side a.active { background:var(--panel2); border-left:3px solid var(--accent); font-weight:700; }
+  main { padding:26px 30px 70px; min-width:0; }
+  main h1 { font-size:28px; margin-top:6px; border-bottom:1px solid var(--line); padding-bottom:8px; }
+  main h2 { margin-top:30px; border-bottom:1px solid var(--line); padding-bottom:6px; }
+  main h3 { margin-top:22px; }
+  main a { color:var(--blue); }
+  main code { background:var(--panel2); border:1px solid var(--line); border-radius:5px; padding:.1em .4em; font-size:.9em; }
+  main pre { background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:14px; overflow:auto; }
+  main pre code { background:none; border:none; padding:0; }
+  main blockquote { margin:16px 0; padding:10px 16px; border-left:4px solid var(--accent); background:var(--panel); border-radius:0 8px 8px 0; color:var(--text); }
+  main table { border-collapse:collapse; width:100%; margin:14px 0; }
+  main th, main td { border:1px solid var(--line); padding:8px 12px; text-align:left; }
+  main th { background:var(--panel2); }
+  main hr { border:none; border-top:1px solid var(--line); margin:26px 0; }
+  main img { max-width:100%; }
+  .loading { color:var(--muted); }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <span class="brand">⚾ Diamond Dynasty Companion · Docs</span>
+  <a class="home" href="./">← Home</a>
+</div>
+<div class="layout">
+  <nav class="side" id="nav"></nav>
+  <main id="content"><p class="loading">Loading…</p></main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12/marked.min.js"></script>
+<script>
+  // doc key -> { file, title }. The key is what appears in ?doc=…
+  var DOCS = [
+    { key: "home",     file: "README.md",                  title: "Overview" },
+    { key: "how-to",   file: "HOW-TO-RUN.md",              title: "How to run the app" },
+    { key: "criteria", file: "CRITERIA-GUIDE.md",          title: "Criteria guide (ALL / ANY)" },
+    { key: "safety",   file: "SAFETY.md",                  title: "Is this safe?" },
+    { key: "verify",   file: "import-scripts/VERIFY.md",   title: "Verify the import scripts" },
+    { key: "changelog",file: "CHANGELOG.md",               title: "Changelog" },
+    { key: "privacy",  file: "PRIVACY.md",                 title: "Privacy Policy" },
+    { key: "terms",    file: "TERMS.md",                   title: "Terms & Conditions" }
+  ];
+  var byKey = {}, byFile = {};
+  DOCS.forEach(function (d) { byKey[d.key] = d; byFile[d.file] = d; byFile[d.file.split("/").pop()] = d; });
+
+  function currentKey() {
+    var k = new URLSearchParams(location.search).get("doc");
+    return byKey[k] ? k : "home";
+  }
+
+  function buildNav(active) {
+    document.getElementById("nav").innerHTML = DOCS.map(function (d) {
+      return '<a href="?doc=' + d.key + '"' + (d.key === active ? ' class="active"' : '') + '>' + d.title + '</a>';
+    }).join("");
+  }
+
+  // rewrite links to our own .md files so they stay in this viewer
+  function rewriteLinks(root) {
+    root.querySelectorAll("a[href]").forEach(function (a) {
+      var href = a.getAttribute("href");
+      if (!href || /^https?:|^#|^mailto:/.test(href)) return;
+      var name = href.split("#")[0];
+      var hit = byFile[name] || byFile[name.split("/").pop()];
+      if (hit) a.setAttribute("href", "?doc=" + hit.key);
+    });
+  }
+
+  function load(key) {
+    var d = byKey[key];
+    buildNav(key);
+    document.title = d.title + " — Diamond Dynasty Companion";
+    fetch(d.file + "?cb=" + Date.now())
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+      .then(function (md) {
+        var el = document.getElementById("content");
+        el.innerHTML = marked.parse(md);
+        rewriteLinks(el);
+        window.scrollTo(0, 0);
+      })
+      .catch(function (e) {
+        document.getElementById("content").innerHTML = "<p>Couldn't load this doc (" + e.message + "). <a href='https://github.com/Tgon21/diamond-dynasty-companion-docs/blob/main/" + d.file + "'>View on GitHub</a>.</p>";
+      });
+  }
+
+  // intercept sidebar / in-doc clicks for instant nav (no full reload)
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest && e.target.closest("a[href^='?doc=']");
+    if (!a) return;
+    e.preventDefault();
+    var key = new URLSearchParams(a.getAttribute("href").slice(1)).get("doc");
+    if (byKey[key]) { history.pushState({}, "", a.getAttribute("href")); load(key); }
+  });
+  window.addEventListener("popstate", function () { load(currentKey()); });
+
+  load(currentKey());
+</script>
+</body>
+</html>
