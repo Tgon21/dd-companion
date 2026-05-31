@@ -15,9 +15,13 @@ no analytics, no server the developer can see.
 
 ## Guides
 - 📖 **[How to run the app](HOW-TO-RUN.md)** — install & launch on Windows
-- 🧮 **[Criteria guide (ALL / ANY)](CRITERIA-GUIDE.md)** — build lineup filters
+- 💰 **[Sell value & prices](SELL-VALUE.md)** — what the dupe/sell numbers mean
+- ⚾ **[Lineup builder tab](LINEUP-BUILDER.md)** — building from your cards + filtering
+  - **[Lineup builder guide](LINEUP-GUIDE.md)** — auto-build, batting order, bench, modes, saving
+  - **[Criteria guide (ALL / ANY)](CRITERIA-GUIDE.md)** — the two-level filtering
 - 🔒 **[Is this safe? / what the import does](SAFETY.md)** — how importing your collection works
 - 🔍 **[Verify the import scripts yourself](import-scripts/VERIFY.md)** — diff-check before you paste anything
+- ❓ **[FAQ & Troubleshooting](FAQ.md)** — common snags and fixes
 
 ## Legal
 - [Privacy Policy](PRIVACY.md)

@@ -17,6 +17,8 @@
   nav.side a { display:block; padding:9px 12px; margin:2px 0; border-radius:8px; color:var(--text); text-decoration:none; font-size:14px; }
   nav.side a:hover { background:var(--panel2); }
   nav.side a.active { background:var(--panel2); border-left:3px solid var(--accent); font-weight:700; }
+  nav.side a.child { padding-left:24px; font-size:13px; color:var(--muted); }
+  nav.side a.child.active { color:var(--text); }
   main { padding:26px 30px 70px; min-width:0; }
   main h1 { font-size:28px; margin-top:6px; border-bottom:1px solid var(--line); padding-bottom:8px; }
   main h2 { margin-top:30px; border-bottom:1px solid var(--line); padding-bottom:6px; }
@@ -47,28 +49,44 @@
 <script src="https://cdn.jsdelivr.net/npm/marked@12/marked.min.js"></script>
 <script>
   // doc key -> { file, title }. The key is what appears in ?doc=…
+  // Top-level docs; an item may have `children` (rendered indented under it).
   var DOCS = [
     { key: "home",     file: "README.md",                  title: "Overview" },
     { key: "how-to",   file: "HOW-TO-RUN.md",              title: "How to run the app" },
-    { key: "criteria", file: "CRITERIA-GUIDE.md",          title: "Criteria guide (ALL / ANY)" },
+    { key: "pricing",  file: "SELL-VALUE.md",              title: "Sell value & prices" },
+    { key: "lineup-builder", file: "LINEUP-BUILDER.md",    title: "Lineup builder tab", children: [
+        { key: "lineup",   file: "LINEUP-GUIDE.md",        title: "Lineup builder guide" },
+        { key: "criteria", file: "CRITERIA-GUIDE.md",      title: "Criteria guide (ALL / ANY)" }
+    ] },
     { key: "safety",   file: "SAFETY.md",                  title: "Is this safe?" },
     { key: "verify",   file: "import-scripts/VERIFY.md",   title: "Verify the import scripts" },
+    { key: "faq",      file: "FAQ.md",                     title: "FAQ & Troubleshooting" },
     { key: "changelog",file: "CHANGELOG.md",               title: "Changelog" },
     { key: "privacy",  file: "PRIVACY.md",                 title: "Privacy Policy" },
     { key: "terms",    file: "TERMS.md",                   title: "Terms & Conditions" }
   ];
+  // flatten (parents + children) for lookups
+  var FLAT = [];
+  DOCS.forEach(function (d) { FLAT.push(d); (d.children || []).forEach(function (c) { FLAT.push(c); }); });
   var byKey = {}, byFile = {};
-  DOCS.forEach(function (d) { byKey[d.key] = d; byFile[d.file] = d; byFile[d.file.split("/").pop()] = d; });
+  FLAT.forEach(function (d) { byKey[d.key] = d; byFile[d.file] = d; byFile[d.file.split("/").pop()] = d; });
 
   function currentKey() {
     var k = new URLSearchParams(location.search).get("doc");
     return byKey[k] ? k : "home";
   }
 
+  function navLink(d, active, child) {
+    var cls = (d.key === active ? "active" : "") + (child ? " child" : "");
+    return '<a href="?doc=' + d.key + '"' + (cls.trim() ? ' class="' + cls.trim() + '"' : '') + '>' + (child ? "↳ " : "") + d.title + '</a>';
+  }
   function buildNav(active) {
-    document.getElementById("nav").innerHTML = DOCS.map(function (d) {
-      return '<a href="?doc=' + d.key + '"' + (d.key === active ? ' class="active"' : '') + '>' + d.title + '</a>';
-    }).join("");
+    var html = "";
+    DOCS.forEach(function (d) {
+      html += navLink(d, active, false);
+      (d.children || []).forEach(function (c) { html += navLink(c, active, true); });
+    });
+    document.getElementById("nav").innerHTML = html;
   }
 
   // rewrite links to our own .md files so they stay in this viewer
