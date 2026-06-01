@@ -1,4 +1,4 @@
-# Sell value & prices — what the numbers mean
+# Sell Value & Prices — What the Numbers Mean
 
 The app's original job: show your **duplicate** cards and **what you'd actually get** for selling
 the extras. Here's how that number is worked out.

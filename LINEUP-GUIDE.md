@@ -1,4 +1,4 @@
-# Lineup Builder guide
+# Lineup Builder Guide
 
 The Lineup Builder assembles a full team **from the cards you own**, optionally narrowed to a
 program's or event's requirements. This covers everything except the filtering switches — those

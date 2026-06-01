@@ -1,4 +1,4 @@
-# The Lineup Builder tab
+# The Lineup Builder Tab
 
 The Lineup Builder is the heart of the app: assemble a **full team from the cards you own** and
 tune it to whatever a program or event is asking for. It's a granular lineup creator — you set the

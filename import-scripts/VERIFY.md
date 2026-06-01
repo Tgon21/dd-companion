@@ -1,4 +1,4 @@
-# Verify the import scripts before you paste anything
+# Verify the Import Scripts Before You Paste Anything
 
 You should never paste a script you can't check. Both import scripts are published here
 **byte-for-byte identical** to what the app shows you, so you can confirm nothing was changed

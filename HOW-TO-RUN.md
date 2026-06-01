@@ -1,4 +1,4 @@
-# How to run the app (Windows)
+# How to Run the App (Windows)
 
 Card Query lets you see your duplicate cards and what they'd sell for,
 browse the full card database, and build lineups. **Everything runs on your own PC** — and

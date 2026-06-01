@@ -1,4 +1,4 @@
-# Is this safe? — what importing your collection actually does
+# Is This Safe? — What Importing Your Collection Actually Does
 
 Short version: the import **only reads which cards you own** (uuid, name, quantity) from
 theshow.com's own inventory endpoint, the same one the website uses. It runs **in your own
