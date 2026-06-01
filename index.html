@@ -47,7 +47,7 @@
   <p>See your duplicate cards and what they'd sell for, browse the full card database, and build lineups. Everything runs <b>on your own PC</b> — no account or login is needed just to browse.</p>
 
   <div class="cta">
-    <a class="dl" href="https://github.com/Tgon21/diamond-dynasty-companion-docs/releases/latest/download/MLB-Companion.zip">⬇ Download for Windows</a>
+    <a class="dl" href="https://github.com/Tgon21/dd-companion/releases/latest/download/MLB-Companion.zip">⬇ Download for Windows</a>
     <div class="ver" id="ver">Latest version: <b id="verNum">…</b><span id="verNotes"></span></div>
   </div>
 
@@ -74,7 +74,7 @@
   <ul class="docs">
     <li><a href="docs.html?doc=how-to">How to run the app</a></li>
     <li><a href="docs.html?doc=pricing">Sell value &amp; prices</a></li>
-    <li><a href="docs.html?doc=lineup-builder">Lineup builder tab</a> — <a href="docs.html?doc=lineup">building</a> · <a href="docs.html?doc=criteria">criteria (ALL/ANY)</a></li>
+    <li><a href="docs.html?doc=lineup-builder">Lineup builder tab</a></li>
     <li><a href="docs.html?doc=safety">Is this safe? / what the import does</a></li>
     <li><a href="docs.html?doc=verify">Verify the import scripts</a></li>
     <li><a href="docs.html?doc=faq">FAQ &amp; Troubleshooting</a></li>
@@ -90,7 +90,7 @@
 
 <script>
   // Show the current published version from version.json
-  fetch("https://raw.githubusercontent.com/Tgon21/diamond-dynasty-companion-docs/main/version.json", { cache: "no-store" })
+  fetch("https://raw.githubusercontent.com/Tgon21/dd-companion/main/version.json", { cache: "no-store" })
     .then(function (r) { return r.json(); })
     .then(function (j) {
       document.getElementById("verNum").textContent = "v" + (j.version || "?");

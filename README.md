@@ -9,8 +9,8 @@ no analytics, no server the developer can see.
 > read the guides and verify the scripts for yourself. The app itself is a separate project.
 
 ## ⬇ Get the app
-- **Download page:** https://tgon21.github.io/diamond-dynasty-companion-docs/
-- **Direct download:** [latest `MLB-Companion.zip`](https://github.com/Tgon21/diamond-dynasty-companion-docs/releases/latest/download/MLB-Companion.zip)
+- **Download page:** https://tgon21.github.io/dd-companion/
+- **Direct download:** [latest `MLB-Companion.zip`](https://github.com/Tgon21/dd-companion/releases/latest/download/MLB-Companion.zip)
 - **What changed:** [CHANGELOG](CHANGELOG.md)
 
 ## Guides
@@ -34,8 +34,8 @@ no analytics, no server the developer can see.
 ## Linking to these docs
 Each file has a stable human page and a raw text URL:
 
-- Human page: `https://github.com/Tgon21/diamond-dynasty-companion-docs/blob/main/CRITERIA-GUIDE.md`
-- Raw text: `https://raw.githubusercontent.com/Tgon21/diamond-dynasty-companion-docs/main/CRITERIA-GUIDE.md`
+- Human page: `https://github.com/Tgon21/dd-companion/blob/main/CRITERIA-GUIDE.md`
+- Raw text: `https://raw.githubusercontent.com/Tgon21/dd-companion/main/CRITERIA-GUIDE.md`
 
 (Swap the filename for any other doc.)
 
