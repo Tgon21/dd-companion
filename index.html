@@ -32,6 +32,8 @@
   @media (max-width:640px){ ul.docs { grid-template-columns:1fr; } }
   ul.docs a { display:block; background:var(--panel); border:1px solid var(--line); border-radius:9px; padding:11px 13px; text-decoration:none; color:var(--text); }
   ul.docs a:hover { border-color:var(--accent); }
+  ul.docs li.docs-full { grid-column: 1 / -1; }
+  ul.docs li.docs-full a { text-align:center; font-weight:700; }
   .whatsnew { background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:14px 18px; }
   footer { color:var(--muted); font-size:13px; text-align:center; margin-top:40px; border-top:1px solid var(--line); padding-top:18px; }
 </style>
@@ -73,6 +75,7 @@
 
   <h2>📖 Guides &amp; safety</h2>
   <ul class="docs">
+    <li class="docs-full"><a href="docs.html?doc=home">📖 Overview — start here</a></li>
     <li><a href="docs.html?doc=how-to">How to run the app</a></li>
     <li><a href="docs.html?doc=pricing">Sell value &amp; prices</a></li>
     <li><a href="docs.html?doc=lineup-builder">Lineup builder tab</a></li>
