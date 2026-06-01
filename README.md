@@ -1,9 +1,10 @@
-# MLB The Show 26 — Diamond Dynasty Companion · Docs
+# Card Query · Docs
 
-User guides and safety info for the **Diamond Dynasty Companion**, a free, fan-made desktop
-tool that helps you see your duplicate cards and their sell value, browse the full card
-database, and build lineups. **The app runs entirely on your own computer** — no accounts,
-no analytics, no server the developer can see.
+**Card Query is an MLB The Show helper — a deep-querying application for your Diamond Dynasty
+cards.** Search your collection by detailed, nested criteria, see which duplicates are worth
+selling (and for how much), browse the full card database, and build lineups from the cards you
+own. **It runs entirely on your own computer** — no accounts, no analytics, no server the
+developer can see.
 
 > This repository holds **only the documentation and the exact import scripts** so you can
 > read the guides and verify the scripts for yourself. The app itself is a separate project.

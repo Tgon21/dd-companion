@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Docs — Diamond Dynasty Companion</title>
+<title>Docs — Card Query</title>
 <link rel="icon" href="favicon.svg" type="image/svg+xml" />
 <style>
   :root { --bg:#0f1115; --panel:#161a22; --panel2:#1d222c; --line:#2a313d; --text:#e7ecf3; --muted:#8b97a8; --accent:#f5a623; --blue:#5aa6ff; --green:#3fb950; }
@@ -45,7 +45,7 @@
 </head>
 <body>
 <div class="topbar">
-  <span class="brand">⚾ Diamond Dynasty Companion · Docs</span>
+  <span class="brand">⚾ Card Query · Docs</span>
   <a class="home" href="./">← Home</a>
 </div>
 <div class="layout">
@@ -143,7 +143,7 @@
   function load(key) {
     var d = byKey[key];
     buildNav(key);
-    document.title = d.title + " — Diamond Dynasty Companion";
+    document.title = d.title + " — Card Query";
     fetch(d.file + "?cb=" + Date.now())
       .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
       .then(function (md) {

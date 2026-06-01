@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to the MLB The Show 26 — Diamond Dynasty Companion. Newest first.
+All notable changes to the MLB The Show 26 — Card Query. Newest first.
 
 ## v1.1.0 — 2026-05-31
 - **Two-level ALL / ANY criteria.** Each filter line has its own ALL/ANY switch, plus a top-level "match ALL lines / ANY line" switch — so you can build nested logic like `(Pitcher AND Sinker AND Cutter) AND (35+ OR Vintage OR Live)`. Replaces the old per-criterion "Required" box. ([guide](CRITERIA-GUIDE.md))
