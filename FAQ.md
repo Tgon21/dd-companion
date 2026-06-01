@@ -10,13 +10,13 @@ The app isn't code-signed (no paid certificate), so Windows shows a SmartScreen 
 - **Browser version:** a small black console window opens (leave it open) and your browser should
   open to **http://localhost:4000**. If the browser didn't open, type that address in yourself.
 - **First launch takes ~1 minute** while it downloads current card prices — give it a moment.
-- **Windowed version:** if no window appears, make sure you ran the installer (`MLB Companion Setup.exe`) and launched it from the **MLB Companion** shortcut.
+- **Windowed version:** if no window appears, make sure you ran the installer (`Card Query Setup.exe`) and launched it from the **Card Query** shortcut.
 
 ## It says the port is in use / localhost:4000 won't load
 Something else is using port 4000. Open a Command Prompt in the app's folder and run:
 ```
 set PORT=4500
-"MLB Companion.exe"
+"Card Query.exe"
 ```
 then use **http://localhost:4500** instead.
 
@@ -37,7 +37,7 @@ the header. Remember prices are live and can change between refreshes — verify
 ## How do I update the app?
 The app checks on launch and shows a **"🆕 new version available"** banner with a download link when
 there's a newer build. Grab the new download and run it (re-run the installer for the Windowed
-version, or replace `MLB Companion.exe` for the Browser version).
+version, or replace `Card Query.exe` for the Browser version).
 
 ## Is my login / account safe?
 Yes — the import only **reads** which cards you own, runs on **your** machine, and never sends

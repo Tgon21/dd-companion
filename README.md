@@ -11,7 +11,7 @@ developer can see.
 
 ## ⬇ Get the app
 - **Download page:** https://tgon21.github.io/dd-companion/
-- **Direct download:** [latest `MLB-Companion.zip`](https://github.com/Tgon21/dd-companion/releases/latest/download/MLB-Companion.zip)
+- **Direct download:** [latest `Card-Query.zip`](https://github.com/Tgon21/dd-companion/releases/latest/download/Card-Query.zip)
 - **What changed:** [CHANGELOG](CHANGELOG.md)
 
 ## Guides
