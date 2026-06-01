@@ -5,8 +5,10 @@ You should never paste a script you can't check. Both import scripts are publish
 or added.
 
 There are two scripts:
-- [`bookmarklet.txt`](bookmarklet.txt) — the beginner-friendly bookmarklet (a `javascript:` link you click).
-- [`console-snippet.txt`](console-snippet.txt) — the same logic for pasting into your browser's developer console.
+- [`bookmarklet.txt`](https://github.com/Tgon21/dd-companion/blob/main/import-scripts/bookmarklet.txt) — the beginner-friendly bookmarklet (a `javascript:` link you click).
+- [`console-snippet.txt`](https://github.com/Tgon21/dd-companion/blob/main/import-scripts/console-snippet.txt) — the same logic for pasting into your browser's developer console.
+
+> Both scripts are shown in full with **Copy** buttons at the bottom of this page (fetched live from this repo, so they're identical to what the app gives you).
 
 ## How to diff-check (easiest: an online diff tool)
 1. Open the script file here on GitHub and click **Raw**, then select-all and copy.

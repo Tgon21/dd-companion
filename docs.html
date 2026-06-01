@@ -35,6 +35,12 @@
   main hr { border:none; border-top:1px solid var(--line); margin:26px 0; }
   main img { max-width:100%; }
   .loading { color:var(--muted); }
+  .script-box { margin:16px 0; }
+  .script-box .shead { display:flex; align-items:center; justify-content:space-between; gap:10px; margin:0 0 6px; }
+  .script-box h3 { margin:0; }
+  .copybtn { background:var(--accent); color:#1a1205; border:none; font-weight:700; border-radius:8px; padding:6px 12px; cursor:pointer; font-size:13px; white-space:nowrap; }
+  .copybtn:hover { filter:brightness(1.07); }
+  .script-box pre { max-height:220px; }
 </style>
 </head>
 <body>
@@ -101,6 +107,39 @@
     });
   }
 
+  // On the verify page, show both import scripts in full with Copy buttons
+  // (fetched live from the repo, so they match exactly what the app uses).
+  function injectScripts(container) {
+    var scripts = [
+      { title: "Bookmarklet — bookmarklet.txt", file: "import-scripts/bookmarklet.txt" },
+      { title: "Console snippet — console-snippet.txt", file: "import-scripts/console-snippet.txt" }
+    ];
+    var h = document.createElement("h2"); h.textContent = "Copy a script";
+    container.appendChild(h);
+    var p = document.createElement("p");
+    p.innerHTML = "Fetched live from this repo — identical to what the app shows. Copy one here and diff it against the app's version, or just use it.";
+    container.appendChild(p);
+    scripts.forEach(function (s) {
+      var box = document.createElement("div"); box.className = "script-box";
+      var head = document.createElement("div"); head.className = "shead";
+      var title = document.createElement("h3"); title.textContent = s.title;
+      var btn = document.createElement("button"); btn.className = "copybtn"; btn.textContent = "📋 Copy";
+      head.appendChild(title); head.appendChild(btn);
+      var pre = document.createElement("pre"); var code = document.createElement("code");
+      pre.appendChild(code); box.appendChild(head); box.appendChild(pre);
+      container.appendChild(box);
+      fetch(s.file + "?cb=" + Date.now()).then(function (r) { return r.text(); }).then(function (t) {
+        var text = t.replace(/\s+$/, "");
+        code.textContent = text;
+        btn.onclick = function () {
+          navigator.clipboard.writeText(text).then(function () {
+            btn.textContent = "✓ Copied"; setTimeout(function () { btn.textContent = "📋 Copy"; }, 1500);
+          }, function () { btn.textContent = "Copy failed"; });
+        };
+      }).catch(function () { code.textContent = "(couldn't load — see the GitHub link above)"; });
+    });
+  }
+
   function load(key) {
     var d = byKey[key];
     buildNav(key);
@@ -111,6 +150,7 @@
         var el = document.getElementById("content");
         el.innerHTML = marked.parse(md);
         rewriteLinks(el);
+        if (key === "verify") injectScripts(el);
         window.scrollTo(0, 0);
       })
       .catch(function (e) {
