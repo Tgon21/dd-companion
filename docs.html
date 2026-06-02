@@ -12,8 +12,17 @@
   .topbar { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:12px 18px; background:var(--panel); border-bottom:1px solid var(--line); position:sticky; top:0; z-index:5; }
   .topbar .brand { font-weight:800; }
   .topbar a.home { color:var(--blue); text-decoration:none; font-weight:600; }
+  .topbar-left { display:flex; align-items:center; gap:10px; min-width:0; }
+  .menu-btn { display:none; background:var(--panel2); border:1px solid var(--line); color:var(--text); border-radius:8px; padding:6px 11px; font-size:14px; font-weight:700; cursor:pointer; white-space:nowrap; }
   .layout { display:grid; grid-template-columns:230px 1fr; gap:0; max-width:1100px; margin:0 auto; }
-  @media (max-width:760px){ .layout { grid-template-columns:1fr; } nav.side { position:static; border-right:none; border-bottom:1px solid var(--line); } }
+  @media (max-width:760px){
+    .layout { grid-template-columns:1fr; }
+    .menu-btn { display:inline-block; }
+    .topbar .brand { font-size:15px; }
+    /* sidebar becomes a drop-down menu that overlays content instead of filling the page */
+    nav.side { position:fixed; top:49px; left:0; right:0; height:auto; max-height:calc(100vh - 49px); border-right:none; border-bottom:1px solid var(--line); background:var(--panel); z-index:10; display:none; box-shadow:0 10px 24px rgba(0,0,0,.45); }
+    nav.side.open { display:block; }
+  }
   nav.side { border-right:1px solid var(--line); padding:18px 12px; position:sticky; top:49px; align-self:start; height:calc(100vh - 49px); overflow:auto; }
   nav.side a { display:block; padding:9px 12px; margin:2px 0; border-radius:8px; color:var(--text); text-decoration:none; font-size:14px; }
   nav.side a:hover { background:var(--panel2); }
@@ -45,7 +54,10 @@
 </head>
 <body>
 <div class="topbar">
-  <span class="brand">⚾ Card Query · Docs</span>
+  <div class="topbar-left">
+    <button class="menu-btn" id="menuBtn" aria-label="Toggle docs menu">☰ Docs</button>
+    <span class="brand">⚾ Card Query · Docs</span>
+  </div>
   <a class="home" href="./">← Home</a>
 </div>
 <div class="layout">
@@ -158,13 +170,17 @@
       });
   }
 
+  // mobile: toggle the docs menu
+  var nav = document.getElementById("nav");
+  document.getElementById("menuBtn").addEventListener("click", function () { nav.classList.toggle("open"); });
+
   // intercept sidebar / in-doc clicks for instant nav (no full reload)
   document.addEventListener("click", function (e) {
     var a = e.target.closest && e.target.closest("a[href^='?doc=']");
     if (!a) return;
     e.preventDefault();
     var key = new URLSearchParams(a.getAttribute("href").slice(1)).get("doc");
-    if (byKey[key]) { history.pushState({}, "", a.getAttribute("href")); load(key); }
+    if (byKey[key]) { history.pushState({}, "", a.getAttribute("href")); load(key); nav.classList.remove("open"); } // close menu after picking
   });
   window.addEventListener("popstate", function () { load(currentKey()); });
 
